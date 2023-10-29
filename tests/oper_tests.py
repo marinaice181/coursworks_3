@@ -65,4 +65,3 @@ def test_hide_number_2(class_fixture_2):
 
 def test_amount(class_fixture_1):
     assert class_fixture_1.amount() == "41096.24 USD"
-    
