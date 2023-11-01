@@ -12,6 +12,6 @@ last_five_operations = get_last_five_operations(operations_list)
 # Генерация вывод данных
 for element in last_five_operations:
     operation = Operation(element)
-    print(f"""\n{operation.date()} {operation.description()}
+    print(f"""\n{operation.date()} {operation.description()} 
 {operation.hide_number(operation.account_from())} -> {operation.hide_number(operation.account_to())}
 {operation.amount()}""")

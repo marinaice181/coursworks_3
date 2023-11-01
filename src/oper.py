@@ -14,7 +14,7 @@ class Operation:
         """
         return f"{self.operation})"
 
-    def sorted_date(self):
+    def date(self):
         """
         Выводит дату
         """
@@ -22,7 +22,7 @@ class Operation:
         operation_date = datetime.strptime(operation_date_str, "%Y-%m-%dT%H:%M:%S.%f")
         return operation_date.strftime("%d.%m.%Y")
 
-    def account_description(self):
+    def description(self):
         """
         Выводит описание
         """
@@ -44,20 +44,17 @@ class Operation:
         return self.operation["to"]
 
     def hide_number(self, account):
-        """
-        Внесение средств и маскирование номера
-        """
         if account == "":
-            return
+            return "Внесение средств"
         else:
-            account = account.split(" ")
+            account = account.split()
             account_number = account[-1]
             account.pop(len(account) - 1)
-            account_name = "".join(account)
+            account_name = " ".join(account)
             if "Счет" in account:
                 return f"{account_name} {account_number[16:20]}"
             else:
-                return f"{account_name} {account_number[0:4]} {account_number[4:6]} {account_number[12:16]}"
+                return f"{account_name} {account_number[0:4]} {account_number[4:6]}{account_number[12:16]}"
 
     def amount(self):
         """
