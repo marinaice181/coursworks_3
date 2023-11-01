@@ -1,5 +1,6 @@
 from _datetime import datetime
 
+
 class Operation:
 
     def __init__(self, operation):
@@ -35,7 +36,7 @@ class Operation:
         if "from" in self.operation.keys():
             return self.operation["from"]
         else:
-            return
+            return ""
 
     def account_to(self):
         """
@@ -45,19 +46,17 @@ class Operation:
 
     def hide_number(self, account):
         if account == "":
-            return "Внесение средств"
+            return "Перевод организации"
         else:
-            account = account.split()
+            account = account.split(" ")
             account_number = account[-1]
             account.pop(len(account) - 1)
             account_name = " ".join(account)
             if "Счет" in account:
-                return f"{account_name} {account_number[16:20]}"
+                return f"{account_name} **{account_number[16:20]}"
             else:
-                return f"{account_name} {account_number[0:4]} {account_number[4:6]}{account_number[12:16]}"
+                return f"{account_name} {account_number[0:4]} {account_number[4:6]}** **** {account_number[12:16]}"
 
     def amount(self):
-        """
-        Выводит сумму
-        """
+        """Выводит сумму """
         return f'{self.operation["operationAmount"]["amount"]} {self.operation["operationAmount"]["currency"]["name"]}'
